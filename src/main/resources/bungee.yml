@@ -1,0 +1,4 @@
+name: PingPlugin
+version: @version@
+main: xyz.n7mn.dev.pingplugin.PingPlugin
+description: PingPlugin
