@@ -1,7 +1,9 @@
 package xyz.n7mn.dev.pingplugin;
 
+import net.md_5.bungee.api.Callback;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -23,24 +25,19 @@ public final class PingPlugin extends Plugin {
 
                     ProxiedPlayer player = (ProxiedPlayer) sender;
 
-                    textComponent.setText(player.getName() + "'s ping : " + player.getPing() + " ms");
-                    sender.sendMessage(textComponent);
-                    return;
+                    long start = System.currentTimeMillis();
+                    player.getServer().getInfo().ping((result, error) -> {
+                        long stop = System.currentTimeMillis();
+
+                        textComponent.setText("----- Ping Result -----" +
+                                player.getName() + "'s ping : " + (player.getPing() + (stop - start)) + " ms\n" +
+                                "Player <---> Proxy  : " + player.getPing() + " ms\n" +
+                                "Proxy  <---> Server : " + (stop - start) + " ms");
+                        sender.sendMessage(textComponent);
+                    });
+
+
                 }
-
-                if (args.length == 0){
-                    textComponent.setText(ChatColor.RED + "Error!\n/ping <PlayerName>");
-                    sender.sendMessage(textComponent);
-                    return;
-                }
-
-                if (args.length == 1){
-                    ProxiedPlayer player = getProxy().getPlayer(args[0]);
-
-                    textComponent.setText(player.getName() + "'s ping : " + player.getPing() + " ms");
-                    sender.sendMessage(textComponent);
-                }
-
             }
         });
     }
