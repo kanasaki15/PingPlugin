@@ -1,10 +1,6 @@
 package xyz.n7mn.dev.pingplugin;
 
-import net.md_5.bungee.api.Callback;
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.ServerPing;
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
@@ -29,7 +25,7 @@ public final class PingPlugin extends Plugin {
                     player.getServer().getInfo().ping((result, error) -> {
                         long stop = System.currentTimeMillis();
 
-                        textComponent.setText("----- Ping Result -----" +
+                        textComponent.setText("----- Ping Result -----\n" +
                                 player.getName() + "'s ping : " + (player.getPing() + (stop - start)) + " ms\n" +
                                 "Player <---> Proxy  : " + player.getPing() + " ms\n" +
                                 "Proxy  <---> Server : " + (stop - start) + " ms");
