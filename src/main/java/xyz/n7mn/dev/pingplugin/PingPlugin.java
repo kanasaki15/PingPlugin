@@ -6,8 +6,6 @@ import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Plugin;
 
-import java.util.List;
-
 public final class PingPlugin extends Plugin {
 
     @Override
