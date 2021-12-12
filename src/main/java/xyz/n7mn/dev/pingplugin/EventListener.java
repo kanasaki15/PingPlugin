@@ -18,7 +18,7 @@ public class EventListener implements Listener {
             version.setProtocol(mine1_18);
         }
 
-        version.setName("7mi-sys 1.8-1.18");
+        version.setName("7mi-sys 1.8-1.18.1");
         e.getResponse().setVersion(version);
     }
 
