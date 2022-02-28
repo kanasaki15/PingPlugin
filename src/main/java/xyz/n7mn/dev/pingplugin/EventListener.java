@@ -1,6 +1,7 @@
 package xyz.n7mn.dev.pingplugin;
 
 import net.md_5.bungee.api.ServerPing;
+import net.md_5.bungee.api.event.PreLoginEvent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
@@ -13,13 +14,13 @@ public class EventListener implements Listener {
         ServerPing.Protocol version = e.getResponse().getVersion();
 
         // minecraft.jp対策
-        int mine1_18 = 757;
+        int mine1_18 = 758;
         if (!(version.getProtocol() >= 47 && version.getProtocol() <= mine1_18)){
             version.setProtocol(mine1_18);
         }
 
-        version.setName("7mi-sys 1.8-1.18.1");
+        version.setName("7mi-sys 1.8-1.18.2");
         e.getResponse().setVersion(version);
     }
-
+    
 }
