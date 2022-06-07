@@ -14,12 +14,12 @@ public class EventListener implements Listener {
         ServerPing.Protocol version = e.getResponse().getVersion();
 
         // minecraft.jp対策
-        int mine1_18 = 758;
-        if (!(version.getProtocol() >= 47 && version.getProtocol() <= mine1_18)){
-            version.setProtocol(mine1_18);
+        int mine1_19 = 759;
+        if (!(version.getProtocol() >= 47 && version.getProtocol() <= mine1_19)){
+            version.setProtocol(mine1_19);
         }
 
-        version.setName("7mi-sys 1.8-1.18.2");
+        version.setName("7mi-sys 1.8-1.19");
         e.getResponse().setVersion(version);
     }
     
